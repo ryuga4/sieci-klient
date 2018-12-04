@@ -1,0 +1,5 @@
+C:\Users\micjan11\RiderProjects\ClientTcp\Client\bin\Debug\Client.dll
+C:\Users\micjan11\RiderProjects\ClientTcp\Client\bin\Debug\Client.pdb
+C:\Users\micjan11\RiderProjects\ClientTcp\Client\obj\Debug\Client.csprojResolveAssemblyReference.cache
+C:\Users\micjan11\RiderProjects\ClientTcp\Client\obj\Debug\Client.dll
+C:\Users\micjan11\RiderProjects\ClientTcp\Client\obj\Debug\Client.pdb
