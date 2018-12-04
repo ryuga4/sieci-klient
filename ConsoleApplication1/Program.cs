@@ -18,6 +18,8 @@ namespace ConsoleApplication1
 
             
             var c = new FileSender();
+            var x = File.ReadAllBytes("C:\\Users\\micjan11\\dupa.txt.txt");
+            c.SendFile(x, "txt", "dwa");
             c.FilesEvent += PrintFiles;
 
 
