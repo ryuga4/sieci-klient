@@ -13,11 +13,11 @@ namespace Client
 
         public TcpClient Connection { get; set; }
         public event EventHandler<FilesEventArgs> FilesEvent;
-        public FileSender()
+        public FileSender(string addr)
         
         {
-            this.Connection = new TcpClient("localhost", 3000);
-            new Thread(ReceiveFiles).Start();
+            this.Connection = new TcpClient(addr, 3000);
+            ReceiveFiles();
         }
 
         public void SendFile(byte[] bytes, string type, string name)
@@ -44,22 +44,28 @@ namespace Client
 
         }
 
-        void ReceiveFiles()
+        async void ReceiveFiles()
         {
             while (true)
             {
                 NetworkStream s = Connection.GetStream();
                 
                 byte[] countA = new byte[1];
-                s.Read(countA, 0, 1);
-
+                await s.ReadAsync(countA, 0, 1);
+                
+                
+                var byte2 = new byte[2137];
+                
+                
+                
+                
                 var files = new List<KeyValuePair<string,string>>();
                 for (int i = 0; i < countA.First(); i++)
                 {
                     byte[] t_ns = new byte[2];
-                    s.Read(t_ns, 0, 2);
+                    await s.ReadAsync(t_ns, 0, 2);
                     byte[] name = new byte[t_ns[1]];
-                    s.Read(name, 0, t_ns[1]);
+                    await s.ReadAsync(name, 0, t_ns[1]);
 
 
                     string type = t_ns[0] == 1 ? "txt" :
@@ -69,9 +75,7 @@ namespace Client
                     files.Add(new KeyValuePair<string, string>(type, Encoding.UTF8.GetString(name)));
                 }
                 
-                var fileArgs = new FilesEventArgs();
-                fileArgs.Length = countA.First();
-                fileArgs.Files = files;
+                var fileArgs = new FilesEventArgs(countA.First(), files);
 
                 FilesEvent.Invoke(this, fileArgs);
             }
@@ -82,5 +86,11 @@ namespace Client
     {
         public int Length { get; set; }
         public List<KeyValuePair<string,string>> Files { get; set; }
+
+        public FilesEventArgs(int length, List<KeyValuePair<string,string>> files)
+        {
+            Length = length;
+            Files = files;
+        } 
     }
 }

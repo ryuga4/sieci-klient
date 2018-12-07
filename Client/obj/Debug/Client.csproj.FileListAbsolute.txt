@@ -1,5 +1,11 @@
-C:\Users\micjan11\RiderProjects\ClientTcp\Client\bin\Debug\Client.dll
-C:\Users\micjan11\RiderProjects\ClientTcp\Client\bin\Debug\Client.pdb
-C:\Users\micjan11\RiderProjects\ClientTcp\Client\obj\Debug\Client.csprojResolveAssemblyReference.cache
-C:\Users\micjan11\RiderProjects\ClientTcp\Client\obj\Debug\Client.dll
-C:\Users\micjan11\RiderProjects\ClientTcp\Client\obj\Debug\Client.pdb
+C:/Users/micjan11/RiderProjects/ClientTcp/Client/bin/Debug/Client.dll
+C:/Users/micjan11/RiderProjects/ClientTcp/Client/bin/Debug/Client.pdb
+C:/Users/micjan11/RiderProjects/ClientTcp/Client/obj/Debug/Client.csprojResolveAssemblyReference.cache
+C:/Users/micjan11/RiderProjects/ClientTcp/Client/obj/Debug/Client.dll
+C:/Users/micjan11/RiderProjects/ClientTcp/Client/obj/Debug/Client.pdb
+/home/michal/Projekty/sieci-klient/Client/bin/Debug/Client.dll
+/home/michal/Projekty/sieci-klient/Client/bin/Debug/Client.pdb
+/home/michal/Projekty/sieci-klient/Client/obj/Debug/Client.csprojResolveAssemblyReference.cache
+/home/michal/Projekty/sieci-klient/Client/obj/Debug/Client.csproj.CoreCompileInputs.cache
+/home/michal/Projekty/sieci-klient/Client/obj/Debug/Client.dll
+/home/michal/Projekty/sieci-klient/Client/obj/Debug/Client.pdb
