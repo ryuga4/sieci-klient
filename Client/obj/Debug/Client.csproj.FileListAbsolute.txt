@@ -9,3 +9,9 @@ C:/Users/micjan11/RiderProjects/ClientTcp/Client/obj/Debug/Client.pdb
 /home/michal/Projekty/sieci-klient/Client/obj/Debug/Client.csproj.CoreCompileInputs.cache
 /home/michal/Projekty/sieci-klient/Client/obj/Debug/Client.dll
 /home/michal/Projekty/sieci-klient/Client/obj/Debug/Client.pdb
+E:\sieci-klient\Client\bin\Debug\Client.dll
+E:\sieci-klient\Client\bin\Debug\Client.pdb
+E:\sieci-klient\Client\obj\Debug\Client.csprojAssemblyReference.cache
+E:\sieci-klient\Client\obj\Debug\Client.csproj.CoreCompileInputs.cache
+E:\sieci-klient\Client\obj\Debug\Client.dll
+E:\sieci-klient\Client\obj\Debug\Client.pdb

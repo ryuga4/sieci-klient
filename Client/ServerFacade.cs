@@ -8,57 +8,53 @@ using System.Threading;
 
 namespace Client
 {
-    public class FileSender
+    public class ServerFacade
     {
+        private TcpClient tcpClient { get; }
 
-        public TcpClient Connection { get; set; }
         public event EventHandler<FilesEventArgs> FilesEvent;
-        public FileSender(string addr)
-        
+        public ServerFacade(string address,int port)        
         {
-            this.Connection = new TcpClient(addr, 3000);
+            this.tcpClient = new TcpClient(address, port);
             ReceiveFiles();
         }
 
         public void SendFile(byte[] bytes, string type, string name)
-        {
-            NetworkStream s = Connection.GetStream();
-            byte[] t = 
+        {            
+            byte[] encodedType = 
                 (type == "txt") ? new byte[] {1} :
                 (type == "png") ? new byte[] {2} :
                 new byte[] {3};
 
-            byte[] ns = new byte[] {(byte) System.Text.ASCIIEncoding.UTF8.GetByteCount(name)};
-            byte[] cs = BitConverter.GetBytes((Int32) bytes.Length).Reverse().ToArray();
-            byte[] name2 = Encoding.UTF8.GetBytes(name);
+            var ns = new byte[] {(byte) Encoding.UTF8.GetByteCount(name)};
+            var cs = BitConverter.GetBytes((Int32) bytes.Length).Reverse().ToArray();
+            var encodedName = Encoding.UTF8.GetBytes(name);
             
             var toSend = new List<byte>();
             
-            toSend.AddRange(t);
+            toSend.AddRange(encodedType);
             toSend.AddRange(ns);
             toSend.AddRange(cs);
-            toSend.AddRange(name2);
+            toSend.AddRange(encodedName);
             toSend.AddRange(bytes);
-            
-            s.Write(toSend.ToArray(), 0 ,toSend.Count);
 
+            using (var stream = tcpClient.GetStream())
+            {
+                stream.Write(toSend.ToArray(), 0, toSend.Count);
+            }           
         }
 
         async void ReceiveFiles()
         {
             while (true)
             {
-                NetworkStream s = Connection.GetStream();
+                NetworkStream s = tcpClient.GetStream();
                 
                 byte[] countA = new byte[1];
                 await s.ReadAsync(countA, 0, 1);
-                
-                
-                var byte2 = new byte[2137];
-                
-                
-                
-                
+                                
+                var byte2 = new byte[2137];                
+                                                
                 var files = new List<KeyValuePair<string,string>>();
                 for (int i = 0; i < countA.First(); i++)
                 {

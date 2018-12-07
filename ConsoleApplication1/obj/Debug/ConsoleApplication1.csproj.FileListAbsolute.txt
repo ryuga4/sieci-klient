@@ -13,3 +13,12 @@ C:/Users/micjan11/RiderProjects/ClientTcp/ConsoleApplication1/bin/Debug/Client.p
 /home/michal/Projekty/sieci-klient/ConsoleApplication1/obj/Debug/ConsoleApplication1.csproj.CoreCompileInputs.cache
 /home/michal/Projekty/sieci-klient/ConsoleApplication1/obj/Debug/ConsoleApplication1.exe
 /home/michal/Projekty/sieci-klient/ConsoleApplication1/obj/Debug/ConsoleApplication1.pdb
+E:\sieci-klient\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe
+E:\sieci-klient\ConsoleApplication1\bin\Debug\ConsoleApplication1.pdb
+E:\sieci-klient\ConsoleApplication1\bin\Debug\Client.dll
+E:\sieci-klient\ConsoleApplication1\bin\Debug\Client.pdb
+E:\sieci-klient\ConsoleApplication1\obj\Debug\ConsoleApplication1.csprojAssemblyReference.cache
+E:\sieci-klient\ConsoleApplication1\obj\Debug\ConsoleApplication1.csproj.CoreCompileInputs.cache
+E:\sieci-klient\ConsoleApplication1\obj\Debug\ConsoleApplication1.csproj.CopyComplete
+E:\sieci-klient\ConsoleApplication1\obj\Debug\ConsoleApplication1.exe
+E:\sieci-klient\ConsoleApplication1\obj\Debug\ConsoleApplication1.pdb

@@ -15,40 +15,40 @@ namespace ConsoleApplication1
         {
 
             //////////////////////////////////////////////////
-            
-            var c1 = new FileSender("localhost");
-            
-            var x = File.ReadAllBytes("/home/michal/dupa"); 
-          
-            
+
+            //var c1 = new FileSender("localhost");
+
+            //var x = File.ReadAllBytes(@"C:\Users\Bartek\Desktop\pies.txt");
+
+
             //c1.SendFile(x, "txt", "dupa3");
             ////dodaje nowy plik na serwer
             ////nazwa musi być unikalna, jak dasz istniejącą to się wysypie xdd
-            
-            c1.FilesEvent += PrintListOfFiles; 
+
+            //c1.FilesEvent += PrintListOfFiles; 
             // Jak tylko serwer wyśle info o nowej liście plików to je wyświetl
             // serwer póki co wysyła liste plików tylko raz, zaraz po nawiązaniu połączenia
-            
-            
-            
+
+
+
             /////////////////////////////////////////////////
-            
-            var c2 = new FileUpdater("localhost", "dupa"); 
+
+            var c2 = new RemoteFileReference("localhost", "dupa3");
             // Podajesz nazwe pliku który chcesz obserwować
             // jak dasz nazwe pliku którego nie ma na serwerze to może być kaszana
-            
+
             c2.UpdateFile(Encoding.UTF8.GetBytes("nowa treść pliku"));
             // modyfikuje treść pliku
             // póki co zmiany nie zachodzą w bazie danych, nowa treść pliku trzymana jest w ramie
-            
 
-            c2.FileUpdatedEvent += PrintUpdatedContent; 
+
+            c2.FileUpdatedEvent += PrintUpdatedContent;
             // wyświetla treść pliku jak tylko się zmieni
             // uważaj, bo jeżeli wyłączysz serwer w trakie jak to się już odapali
             // to zaczyna się kręcić w kółko jak pojebane
             // nie ma żadnej prostej metody sprawdzenia czy serwer się wyłączył czy nie z tego co wiem
-            
-            
+
+
             Thread.Sleep(Timeout.Infinite);
             
         }
