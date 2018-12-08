@@ -6,7 +6,7 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 
-namespace Client
+namespace Client.ServerConnector
 {
     public class ServerFacade
     {
@@ -38,10 +38,10 @@ namespace Client
             toSend.AddRange(encodedName);
             toSend.AddRange(bytes);
 
-            using (var stream = tcpClient.GetStream())
-            {
-                stream.Write(toSend.ToArray(), 0, toSend.Count);
-            }           
+            var stream = tcpClient.GetStream();
+            
+            stream.Write(toSend.ToArray(), 0, toSend.Count);
+                    
         }
 
         async void ReceiveFiles()

@@ -5,7 +5,7 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 
-namespace Client
+namespace Client.ServerConnector
 {
     public class RemoteFileReference
     {
@@ -30,16 +30,14 @@ namespace Client
             toSend.AddRange(nameSize);
             toSend.AddRange(name);
 
-            using (var stream = _tcpClient.GetStream())
-            {
-                stream.Write(toSend.ToArray(), 0, toSend.Count);
-            }                      
-                       
+            var stream = _tcpClient.GetStream();            
+            stream.Write(toSend.ToArray(), 0, toSend.Count);
+                                                       
             GetUpdate();
                         
         }
 
-        void Disconnect()
+        public void Disconnect()
         {
             _tcpClient.Close();
         }
@@ -48,15 +46,23 @@ namespace Client
         {
             while (_tcpClient.Connected)
             {
-                using (var stream = _tcpClient.GetStream())
+                try
                 {
+                    var stream = _tcpClient.GetStream();
+
                     var contentSizeA = new byte[4];
                     await stream.ReadAsync(contentSizeA, 0, 4);
                     var contentSize = BitConverter.ToInt32(contentSizeA.Reverse().ToArray(), 0);
                     var content = new byte[contentSize];
                     await stream.ReadAsync(content, 0, contentSize);
                     FileUpdatedEvent?.Invoke(this, new FileUpdateEventArgs(contentSize, content));
-                }                
+                }
+                catch
+                {
+                    Disconnect();
+                    break;                    
+                }
+                            
             }
         }
 
@@ -65,17 +71,20 @@ namespace Client
             var contentSize = BitConverter.GetBytes(content.Length).Reverse().ToArray();
             var nameSize = new[] {(byte) FileName.Length};
             var type = new byte[] {1};
+            var name = Encoding.UTF8.GetBytes(FileName);
 
             var toSend = new List<byte>();
             toSend.AddRange(type);
             toSend.AddRange(nameSize);
             toSend.AddRange(contentSize);
+            toSend.AddRange(name);
             toSend.AddRange(content);
 
-            using (var stream = _tcpClient.GetStream())
-            {                
-                stream.Write(toSend.ToArray(), 0, toSend.Count);
-            }
+
+            var stream = _tcpClient.GetStream();
+                            
+            stream.Write(toSend.ToArray(), 0, toSend.Count);
+            
 
         }
     }

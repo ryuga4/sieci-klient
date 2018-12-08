@@ -43,9 +43,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Client\Client.ServerFacade.csproj">
+    <ProjectReference Include="..\Client\Client.ServerConnector.csproj">
       <Project>{43999702-89ce-4a86-8477-9327d0b19450}</Project>
-      <Name>Client.ServerFacade</Name>
+      <Name>Client.ServerConnector</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -6,7 +6,8 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 using Client;
-    
+using Client.ServerConnector;
+
 namespace ConsoleApplication1
 {
     internal class Program
@@ -16,7 +17,7 @@ namespace ConsoleApplication1
 
             //////////////////////////////////////////////////
 
-            //var c1 = new FileSender("localhost");
+            //var c1 = new FileSende("localhost");
 
             //var x = File.ReadAllBytes(@"C:\Users\Bartek\Desktop\pies.txt");
 
@@ -33,11 +34,11 @@ namespace ConsoleApplication1
 
             /////////////////////////////////////////////////
 
-            var c2 = new RemoteFileReference("localhost", "dupa3");
+            var c2 = new RemoteFileReference("localhost",3001, "pies.txt");
             // Podajesz nazwe pliku który chcesz obserwować
             // jak dasz nazwe pliku którego nie ma na serwerze to może być kaszana
 
-            c2.UpdateFile(Encoding.UTF8.GetBytes("nowa treść pliku"));
+            c2.UpdateFile(Encoding.UTF8.GetBytes("j"));
             // modyfikuje treść pliku
             // póki co zmiany nie zachodzą w bazie danych, nowa treść pliku trzymana jest w ramie
 
